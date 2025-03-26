@@ -1,10 +1,19 @@
-<script>
+<script lang="ts">
     import { SectionHeadline, Button, ExperienceTable } from "$components";
     import image from "$assets/about-me.jpeg";
     import { goto } from "$app/navigation";
     function onclick() {
         goto("/#contact-form");
     }
+    import type { DevExperience}  from "$lib/types/sanity"; 
+
+
+    interface AboutMeProps{ 
+        workExperience : DevExperience[];
+    }
+
+    let {workExperience } :AboutMeProps = $props()
+
 </script>
 
 <section class="about-me mt-l">
@@ -32,13 +41,13 @@
                 learn from real-world experience and practical know-how, let's
                 dive in together.
             </p>
-            ;
+        
             <Button className="mt-m" {onclick}>
                 Tell me about your Project
             </Button>
         </div>
     </div>
-    <ExperienceTable></ExperienceTable>
+    <ExperienceTable {workExperience}></ExperienceTable>
 </section>
 
 <style>
